@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 
 import logo from '../../assets/commerce.png';
 import useStyles from './styles';
@@ -40,13 +41,17 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           <div className={classes.grow} />
           {location.pathname === '/' && (
           <div className={classes.button}>
+            <IconButton color="inherit">
+               <Brightness7Icon/>
+          {/* dark mode toggle */}
+            </IconButton>
+          </div>
+          )}
             <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
               <Badge badgeContent={totalItems} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>
-          </div>
-          )}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

@@ -34,6 +34,12 @@ const Item = () => {
     {/* buy now btn  */}
 </Grid>
 
+<Grid container xs={12}>
+
+{/* sizes  */}
+
+</Grid>
+
 
 <Grid item lg={2}>
     {/* qty button */}

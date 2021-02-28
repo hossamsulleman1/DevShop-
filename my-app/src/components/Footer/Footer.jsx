@@ -97,15 +97,15 @@ const Footer = () => {
             {/* divider */}
 
             <Grid container>
-<Grid item lg={1/3}>
+<Grid item lg={1/3} xs={12}>
 {/* english stamp language */}
 </Grid>
 
-<Grid item lg={1/3}>
+<Grid item lg={1/3} xs={12}>
     {/* rights 2020 ect */}
 </Grid>
 
-<Grid item lg={1/3}>
+<Grid item lg={1/3} xs={12}>
     {/* cookie notice link */}
     {/* another link */}
 </Grid>
