@@ -89,7 +89,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
             <div className={classes.button}>
               <Switch checked={darkState} onChange={handleThemeChange} />
 
-              <IconButton component={Link} to="/Profile" color="inherit">
+              <IconButton component={Link} to="/welcome" color="inherit">
                 <FaceIcon />
                 {/* profile page */}
               </IconButton>

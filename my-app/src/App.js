@@ -102,10 +102,6 @@ const App = (props) => {
           <div style={{ display: "flex" }}>
             <CssBaseline />
             <Navbar
-              // theme={darkTheme}
-              // checked={darkState}
-              // onChange={handleThemeChange}
-
               totalItems={cart.total_items}
               handleDrawerToggle={handleDrawerToggle}
             />
@@ -137,6 +133,10 @@ const App = (props) => {
                 <Market />
               </Route>
 
+              <Route path="/Welcome" exact>
+                <LoginSign />
+              </Route>
+
               <Route path="/Profile" exact>
                 <Profile />
               </Route>
@@ -147,10 +147,6 @@ const App = (props) => {
 
               <Route path="/Home" exact>
                 <Landing />
-              </Route>
-
-              <Route path="/Welcome" exact>
-                <LoginSign />
               </Route>
             </Switch>
           </div>
