@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { useContext } from "react";
+
 import { Suspense, unstable_useTransition as useTransition } from "react";
 
 import { CssBaseline } from "@material-ui/core";
@@ -11,7 +14,9 @@ import Profile from "./components/Profile/Profile";
 import JoinUS from "./components/JoinUS/JoinUS";
 import Fonts from "./components/Css/Fonts.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Landing from './components/Landing/Body/Landing';
+import Landing from "./components/Landing/Body/Landing";
+import { SemContext } from "./SemContext";
+import LoginSign from "./components/Auth/LoginSign";
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -19,6 +24,14 @@ const App = (props) => {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [darkState, setDarkState] = useContext(SemContext);
+
+  const palletType = darkState ? "dark" : "light";
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: palletType,
+    },
+  });
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -83,61 +96,67 @@ const App = (props) => {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   return (
-    <Suspense fallback={<CircularProgress />}>
-      <Router>
-        <div style={{ display: "flex" }}>
-          <CssBaseline />
-          <Navbar
-          // theme={darkTheme}
-          // checked={darkState}
-          // onChange={handleThemeChange}
+    <ThemeProvider theme={darkTheme}>
+      <Suspense fallback={<CircularProgress />}>
+        <Router>
+          <div style={{ display: "flex" }}>
+            <CssBaseline />
+            <Navbar
+              // theme={darkTheme}
+              // checked={darkState}
+              // onChange={handleThemeChange}
 
-            totalItems={cart.total_items}
-            handleDrawerToggle={handleDrawerToggle}
-          />
-          <Switch>
-            <Route exact path="/Shop">
-              <Products
-                products={products}
-                onAddToCart={handleAddToCart}
-                handleUpdateCartQty
-              />
-            </Route>
-            <Route exact path="/cart">
-              <Cart
-                cart={cart}
-                onUpdateCartQty={handleUpdateCartQty}
-                onRemoveFromCart={handleRemoveFromCart}
-                onEmptyCart={handleEmptyCart}
-              />
-            </Route>
-            <Route path="/checkout" exact>
-              <Checkout
-                cart={cart}
-                order={order}
-                onCaptureCheckout={handleCaptureCheckout}
-                error={errorMessage}
-              />
-            </Route>
-            <Route path="/Market" exact>
-              <Market />
-            </Route>
+              totalItems={cart.total_items}
+              handleDrawerToggle={handleDrawerToggle}
+            />
+            <Switch>
+              <Route exact path="/Shop">
+                <Products
+                  products={products}
+                  onAddToCart={handleAddToCart}
+                  handleUpdateCartQty
+                />
+              </Route>
+              <Route exact path="/cart">
+                <Cart
+                  cart={cart}
+                  onUpdateCartQty={handleUpdateCartQty}
+                  onRemoveFromCart={handleRemoveFromCart}
+                  onEmptyCart={handleEmptyCart}
+                />
+              </Route>
+              <Route path="/checkout" exact>
+                <Checkout
+                  cart={cart}
+                  order={order}
+                  onCaptureCheckout={handleCaptureCheckout}
+                  error={errorMessage}
+                />
+              </Route>
+              <Route path="/Market" exact>
+                <Market />
+              </Route>
 
-            <Route path="/Profile" exact>
-              <Profile />
-            </Route>
+              <Route path="/Profile" exact>
+                <Profile />
+              </Route>
 
-            <Route path="/JoinUS" exact>
-              <JoinUS />
-            </Route>
+              <Route path="/JoinUS" exact>
+                <JoinUS />
+              </Route>
 
-            <Route path="/Home" exact>
-              <Landing/>
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </Suspense>
+              <Route path="/Home" exact>
+                <Landing />
+              </Route>
+
+              <Route path="/Welcome" exact>
+                <LoginSign />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </Suspense>
+    </ThemeProvider>
   );
 };
 

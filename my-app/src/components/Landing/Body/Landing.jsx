@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <>
       {/* puma as inspo */}
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item lg={6} md={12}>
           {/* photo div */}
         </Grid>

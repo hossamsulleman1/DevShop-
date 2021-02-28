@@ -64,23 +64,18 @@ function Content(props) {
         </Grid>
         <Grid item xs={6}>
           <div className="avatardiv">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            
-            <Avatar className={classes.large} >
+            {/* <Avatar className={classes.large} src={authInfo.photoURL}> */}
               H
-            </Avatar>
+            {/* </Avatar> */}
 
             <div className="friendsdiv">
               <div className="justifycenter">
-              
+                <Divider></Divider>
+
+                <p className="SubHeading">ALL FRIENDS</p>
+                <Divider></Divider>
                 <br></br>
-               
+                <Button>Add Friends</Button>
               </div>
 
               <div className="friendsdiv2">

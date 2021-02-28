@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -19,20 +19,16 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
 
-
+import { SemContext } from "../../SemContext";
 
 const PrimarySearchAppBar = ({ totalItems }) => {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const [darkState, setDarkState] = useState(false);
-  const palletType = darkState ? "dark" : "light";
-  const darkTheme = createMuiTheme({
-    palette: {
-      type: palletType,
-    }
-  });
   const handleThemeChange = () => {
     setDarkState(!darkState);
   };
+
+  const [darkState, setDarkState] = useContext(SemContext);
+
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const classes = useStyles();
   const location = useLocation();
@@ -73,7 +69,13 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Typography style={{ textDecoration: 'none' }} component={Link} to="/" variant="h6" color="inherit">
+          <Typography
+            style={{ textDecoration: "none" }}
+            component={Link}
+            to="/"
+            variant="h6"
+            color="inherit"
+          >
             <img
               src={logo}
               alt="Semptia Dev"
@@ -85,8 +87,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           <div className={classes.grow} />
           {location.pathname === "/" && (
             <div className={classes.button}>
-                  <Switch checked={darkState} onChange={handleThemeChange} />
-
+              <Switch checked={darkState} onChange={handleThemeChange} />
 
               <IconButton component={Link} to="/Profile" color="inherit">
                 <FaceIcon />
