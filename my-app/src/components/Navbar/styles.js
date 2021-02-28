@@ -3,6 +3,8 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
+ 
+ 
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -17,6 +19,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     textDecoration: 'none',
   },
+
   image: {
     marginRight: '10px',
   },

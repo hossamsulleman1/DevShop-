@@ -1,4 +1,6 @@
 import React from 'react'
+import Grid  from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 const Footer = () => {
     return (
@@ -103,6 +105,7 @@ const Footer = () => {
 
 <Grid item lg={1/3} xs={12}>
     {/* rights 2020 ect */}
+    <Typography>Rights 2021 Semptia Dev ©️ </Typography>
 </Grid>
 
 <Grid item lg={1/3} xs={12}>

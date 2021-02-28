@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
-import { ShoppingCart } from '@material-ui/icons';
-import { Link, useLocation } from 'react-router-dom';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Badge,
+  MenuItem,
+  Menu,
+  Typography,
+} from "@material-ui/core";
+import { ShoppingCart } from "@material-ui/icons";
+import { Link, useLocation } from "react-router-dom";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
+import LoyaltyIcon from "@material-ui/icons/Loyalty";
+import FaceIcon from "@material-ui/icons/Face";
+import logo from "../../assets/Demo.svg";
+import useStyles from "./styles";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Switch from "@material-ui/core/Switch";
 
-import logo from '../../assets/commerce.png';
-import useStyles from './styles';
+
 
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [darkState, setDarkState] = useState(false);
+  const palletType = darkState ? "dark" : "light";
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: palletType,
+    }
+  });
+  const handleThemeChange = () => {
+    setDarkState(!darkState);
+  };
+
   const classes = useStyles();
   const location = useLocation();
 
@@ -16,12 +41,25 @@ const PrimarySearchAppBar = ({ totalItems }) => {
 
   const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
 
   const renderMobileMenu = (
-    <Menu anchorEl={mobileMoreAnchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={mobileMenuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMobileMenuOpen} onClose={handleMobileMenuClose}>
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
       <MenuItem>
-        <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
+        <IconButton
+          component={Link}
+          to="/cart"
+          aria-label="Show cart items"
+          color="inherit"
+        >
           <Badge badgeContent={totalItems} color="secondary">
             <ShoppingCart />
           </Badge>
@@ -35,23 +73,47 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-            <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> Commerce.js
+          <Typography style={{ textDecoration: 'none' }} component={Link} to="/" variant="h6" color="inherit">
+            <img
+              src={logo}
+              alt="Semptia Dev"
+              height="25px"
+              className={classes.image}
+            />
+            Semptia Dev
           </Typography>
           <div className={classes.grow} />
-          {location.pathname === '/' && (
-          <div className={classes.button}>
-            <IconButton color="inherit">
-               <Brightness7Icon/>
-          {/* dark mode toggle */}
-            </IconButton>
-          </div>
+          {location.pathname === "/" && (
+            <div className={classes.button}>
+                  <Switch checked={darkState} onChange={handleThemeChange} />
+
+
+              <IconButton component={Link} to="/Profile" color="inherit">
+                <FaceIcon />
+                {/* profile page */}
+              </IconButton>
+
+              <IconButton component={Link} to="/Market" color="inherit">
+                <LoyaltyIcon></LoyaltyIcon>
+                {/* market */}
+              </IconButton>
+            </div>
           )}
-            <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-              <Badge badgeContent={totalItems} color="secondary">
-                <ShoppingCart />
-              </Badge>
-            </IconButton>
+          <IconButton
+            component={Link}
+            to="/cart"
+            aria-label="Show cart items"
+            color="inherit"
+          >
+            <Badge badgeContent={totalItems} color="secondary">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
+
+          <IconButton component={Link} to="/Shop" color="inherit">
+            <LocalMallIcon />
+            {/* market */}
+          </IconButton>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

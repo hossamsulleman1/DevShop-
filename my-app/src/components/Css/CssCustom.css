@@ -1,0 +1,264 @@
+.googleLogin {
+  width: 60%;
+  padding: 20px;
+  padding-top: 3%;
+}
+
+.draweravatar {
+  display: flex;
+  justify-content: center;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.PaddingTopBottom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+.PaddingAll {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.floatright {
+  float: right;
+}
+
+.paddingbottomtop {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.paddingleft {
+  padding-left: 70%;
+}
+
+.paddingtop40px {
+  padding-top: 40px;
+}
+
+.paddingtop {
+  padding-top: 10px;
+}
+
+.padding {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.flex {
+  display: flex;
+}
+
+#container {
+  width: 25vw;
+  height: 25vh;
+  display: flex;
+  background: #fafafa;
+}
+
+.iconbuttondiv {
+  display: flex;
+  padding-right: 47%;
+}
+
+.Tilesdivpadding {
+  padding: 5px;
+}
+
+#inner-container {
+  width: 10vw;
+  height: 10vw;
+  margin: auto;
+  background: #fafafa;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -10px -10px 20px rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+.homesvghome {
+  float: right;
+  padding-top: 120px;
+}
+
+.buttondivdiv {
+  width: 150px;
+}
+
+.paddingright {
+  padding-right: 30px;
+}
+
+.speedfloatleft {
+  float: left;
+}
+
+.centerdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.iconColouredPurpleDiv {
+  background-color: #e7eaf6;
+  border-radius: 25px;
+  padding: 20px;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  justify-content: space-evenly;
+}
+
+.containerhome1 {
+  padding: 80px;
+}
+
+.buttondivrighthome {
+  padding-right: 300px;
+  float: right;
+}
+
+.buttondivlefthome {
+  float: left;
+}
+
+.justifycenter {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.padding {
+  padding-right: 46px;
+}
+
+.displayflex {
+  display: flex;
+}
+.introparahome {
+  float: left;
+}
+
+.avatardiv {
+  float: right;
+  padding-right: 50px;
+  padding-top: 60px;
+}
+
+.homesetupdiv {
+  display: flex;
+  justify-content: flex-start;
+  padding: 50px;
+}
+
+.floatright {
+  float: right;
+}
+
+.floatleft {
+  float: left;
+}
+.statsdiv {
+  padding-top: 50px;
+}
+
+.friendsdiv2 {
+  padding-top: 20px;
+}
+
+.friendsdiv {
+  padding-top: 60px;
+}
+
+.headingdiv {
+  padding-top: 30px;
+}
+
+.TrackerPaperInfo {
+  width: 20%;
+  height: 150px;
+}
+
+.premade {
+  padding-right: 50px;
+}
+
+.ActiveTrackers {
+  padding-right: 30%;
+}
+
+.Divtop {
+  padding-top: 40px;
+  padding-left: 50px;
+}
+
+.DashboardQuote {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.IconBoxDash {
+  float: right;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.BookMark {
+  float: right;
+}
+
+.MiniChartDivFlex {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.RightMiniCard {
+  float: right;
+}
+
+.LeftMiniCard {
+  float: left;
+}
+
+.MiniChartCard {
+  width: 50%;
+}
+
+.loginButton {
+  width: 300px;
+}
+
+.newUser {
+  float: right;
+}
+
+.loginDiv {
+  display: flex;
+  justify-content: center;
+  padding-right: 45%;
+}
+
+.or {
+  padding-left: 15%;
+  padding-top: 3%;
+}
+
+.loginButton {
+  width: 60%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.signUp {
+  float: right;
+}

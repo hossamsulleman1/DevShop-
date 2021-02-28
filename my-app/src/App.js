@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Suspense, unstable_useTransition as useTransition } from "react";
 
-import { Navbar, Products, Cart, Checkout } from './components';
-import { commerce } from './lib/commerce';
+import { CssBaseline } from "@material-ui/core";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const App = () => {
+import { Navbar, Products, Cart, Checkout } from "./components";
+import { commerce } from "./lib/commerce";
+import Market from "./components/Market/Market";
+import Profile from "./components/Profile/Profile";
+import JoinUS from "./components/JoinUS/JoinUS";
+import Fonts from "./components/Css/Fonts.css";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Landing from './components/Landing/Body/Landing';
+
+const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -54,7 +62,10 @@ const App = () => {
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
-      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
 
       setOrder(incomingOrder);
 
@@ -72,25 +83,61 @@ const App = () => {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   return (
-   
-    <Router>
-      <div style={{ display: 'flex' }}>
-        <CssBaseline />
-        <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-        <Switch>
-          <Route exact path="/">
-            <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
-          </Route>
-          <Route path="/checkout" exact>
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-    
+    <Suspense fallback={<CircularProgress />}>
+      <Router>
+        <div style={{ display: "flex" }}>
+          <CssBaseline />
+          <Navbar
+          // theme={darkTheme}
+          // checked={darkState}
+          // onChange={handleThemeChange}
+
+            totalItems={cart.total_items}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+          <Switch>
+            <Route exact path="/Shop">
+              <Products
+                products={products}
+                onAddToCart={handleAddToCart}
+                handleUpdateCartQty
+              />
+            </Route>
+            <Route exact path="/cart">
+              <Cart
+                cart={cart}
+                onUpdateCartQty={handleUpdateCartQty}
+                onRemoveFromCart={handleRemoveFromCart}
+                onEmptyCart={handleEmptyCart}
+              />
+            </Route>
+            <Route path="/checkout" exact>
+              <Checkout
+                cart={cart}
+                order={order}
+                onCaptureCheckout={handleCaptureCheckout}
+                error={errorMessage}
+              />
+            </Route>
+            <Route path="/Market" exact>
+              <Market />
+            </Route>
+
+            <Route path="/Profile" exact>
+              <Profile />
+            </Route>
+
+            <Route path="/JoinUS" exact>
+              <JoinUS />
+            </Route>
+
+            <Route path="/Home" exact>
+              <Landing/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Suspense>
   );
 };
 

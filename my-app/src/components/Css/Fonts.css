@@ -1,0 +1,54 @@
+.HomeTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 100px;
+}
+
+.SubHeading {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: small;
+}
+
+.PageTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: x-large;
+}
+
+.PaddingBottom {
+  padding-bottom: 40px;
+
+}
+
+.paddingtop {
+  padding-top: 40px;
+}
+
+.PaddingRight{
+  padding-right: 40px;
+}
+
+.HomeTitleDashboard {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 35px;
+}
+.HomeTitleSmall {
+  /* not acc small idek why i did that  */
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: x-large;
+}
+
+.HomeTitleMedium {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: medium;
+}
+
+.GridTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: large;
+}
