@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from "react";
 import { render } from "react-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -12,11 +13,11 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { SocialIcon } from "react-social-icons";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+
 
 // CONTEXT REACT
 import { SemContext } from "../../SemContext";
-
-import React, { useContext } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,13 +44,14 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function GoogleAuth() {
+  const FirebaseAuth = () => {
   const classes = useStyles();
+  let history = useHistory();
 
   const WriteAuthInfo = (user) => {
-    console.log("WRITE AUTH", user);
     setAuthInfo(user);
-    // handleClick();
+    console.log(authInfo);
+    AuthCheck(authInfo)
   };
 
   const handleClick = () => {
@@ -62,11 +64,23 @@ function GoogleAuth() {
     }
 
     setOpen(false);
+
+
   };
+
+  const AuthCheck = () => {
+console.log(authInfo)
+if (authInfo !== null || authInfo !== undefined ) {
+      console.log("authINFO!!", JSON.stringify(authInfo, null, 2));
+      history.push("/profile");
+      console.log("use effect triggered");
+  }
 
   const [open, setOpen] = React.useState(false);
 
   const [authInfo, setAuthInfo] = useContext(SemContext);
+
+
   return (
     <FirebaseAuthProvider {...config} firebase={firebase}>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -92,31 +106,6 @@ function GoogleAuth() {
 
         <SocialIcon className={classes.SocialIcon} network="youtube" />
 
-        {/* <button
-          onClick={() => {
-            const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(googleAuthProvider);
-          }}
-        >
-          Sign In with Google
-        </button> */}
-        {/* <button
-          data-testid="signin-anon"
-          onClick={() => {
-            firebase.auth().signInAnonymously();
-          }}
-        >
-          Sign In Anonymously
-        </button> */}
-        <br />
-        {/* <button
-          onClick={() => {
-            firebase.auth().signOut();
-          }}
-        >
-          Sign Out
-        </button> */}
-
         <FirebaseAuthConsumer>
           {({ isSignedIn, user, providerId }) => {
             return (
@@ -130,22 +119,14 @@ function GoogleAuth() {
         </FirebaseAuthConsumer>
 
         <div>
-          <IfFirebaseAuthed>
-            {/* {() => {
-              return <div>You are authenticated</div>;
-            }} */}
-          </IfFirebaseAuthed>
+          <IfFirebaseAuthed></IfFirebaseAuthed>
           <IfFirebaseAuthedAnd
             filter={({ providerId }) => providerId !== "anonymous"}
-          >
-            {/* {({ providerId }) => {
-              return <div>You are authenticated with {providerId}</div>;
-            }} */}
-          </IfFirebaseAuthedAnd>
+          ></IfFirebaseAuthedAnd>
         </div>
       </div>
     </FirebaseAuthProvider>
   );
 }
 
-export default GoogleAuth;
+export default FirebaseAuth

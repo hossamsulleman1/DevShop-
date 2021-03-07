@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 // import FriendsAvatarList from "./FriendsAvatarList";
 import { useContext } from "react";
-// import { SemContext } from "../../SemContext";
+import { SemContext } from "../../SemContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Content(props) {
   const classes = useStyles();
-  // const [authInfo , setAuthInfo] = useContext(SemContext)
+  const [authInfo, setAuthInfo] = useContext(SemContext);
   return (
     <Container>
       <Grid container spacing={3}>
@@ -40,9 +40,9 @@ function Content(props) {
           <div className="headingdiv">
             <p className="HomeTitleSmall">HEY WHATS UP,</p>
             {/* <p className="HomeTitle">{authInfo.displayName}</p> */}
-            <p className="HomeTitle">hossam</p>
+            <p className="HomeTitle">{console.log(authInfo.photoURL)}</p>
           </div>
-
+          
           <Divider />
           <div className="statsdiv">
             <p className="HomeTitleMedium">LAST SIGN IN</p>
@@ -64,24 +64,19 @@ function Content(props) {
         </Grid>
         <Grid item xs={6}>
           <div className="avatardiv">
-            {/* <Avatar className={classes.large} src={authInfo.photoURL}> */}
+            <Avatar className={classes.large} src={authInfo.photoURL}>
               H
-            {/* </Avatar> */}
-
+            </Avatar>
             <div className="friendsdiv">
               <div className="justifycenter">
                 <Divider></Divider>
 
-                <p className="SubHeading">ALL FRIENDS</p>
                 <Divider></Divider>
                 <br></br>
-                <Button>Add Friends</Button>
               </div>
 
               <div className="friendsdiv2">
-                <Container>
-                 
-                </Container>
+                <Container></Container>
               </div>
             </div>
           </div>
@@ -92,12 +87,8 @@ function Content(props) {
       <Container>
         <p className="HomeTitleSmall">Favorites</p>
         <Grid container spacing={3}>
-          <Grid item xs>
-            
-          </Grid>
-          <Grid item xs>
-           
-          </Grid>
+          <Grid item xs></Grid>
+          <Grid item xs></Grid>
         </Grid>
       </Container>
       {/* GRAPHS CONTAINER END  */}

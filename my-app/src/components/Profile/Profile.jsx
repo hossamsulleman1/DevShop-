@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 // import FriendsAvatarList from "./FriendsAvatarList";
 import { useContext } from "react";
-// import { SemContext } from "../../SemContext";
+import { SemContext } from "../../SemContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,15 +32,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Content(props) {
   const classes = useStyles();
-  // const [authInfo , setAuthInfo] = useContext(SemContext)
+  const [authInfo , setAuthInfo] = useContext(SemContext)
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <div className="headingdiv">
             <p className="HomeTitleSmall">HEY WHATS UP,</p>
-            {/* <p className="HomeTitle">{authInfo.displayName}</p> */}
-            <p className="HomeTitle">hossam</p>
+            <p className="HomeTitle">{authInfo}</p>
+            {console.log(authInfo)}
+            {/* <p className="HomeTitle">hossam</p> */}
           </div>
 
           <Divider />
