@@ -17,6 +17,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Landing from "./components/Landing/Body/Landing";
 import { SemContext } from "./SemContext";
 import LoginSign from "./components/Auth/LoginSign";
+import  SignedIn from './components/Auth/SignedIn';
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -134,7 +135,7 @@ const App = (props) => {
               </Route>
 
               <Route path="/Welcome" exact>
-                <LoginSign />
+                <SignedIn/>
               </Route>
 
               <Route path="/Profile" exact>

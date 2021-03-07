@@ -44,7 +44,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-  const FirebaseAuth = () => {
+function FirebaseAuth() {
   const classes = useStyles();
   let history = useHistory();
 
@@ -69,8 +69,8 @@ function Alert(props) {
   };
 
   const AuthCheck = () => {
-console.log(authInfo)
-if (authInfo !== null || authInfo !== undefined ) {
+   console.log(authInfo)
+   if (authInfo !== null || authInfo !== undefined ) {
       console.log("authINFO!!", JSON.stringify(authInfo, null, 2));
       history.push("/profile");
       console.log("use effect triggered");
@@ -129,4 +129,4 @@ if (authInfo !== null || authInfo !== undefined ) {
   );
 }
 
-export default FirebaseAuth
+export default FirebaseAuth;
