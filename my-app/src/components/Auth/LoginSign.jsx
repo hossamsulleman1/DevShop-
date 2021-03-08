@@ -8,8 +8,6 @@ import Button from "@material-ui/core/Button";
 import { Fab } from "@material-ui/core/Fab";
 import FirebaseAuth from "./FirebaseAuth";
 
-
-
 const useStyles = makeStyles((theme) => ({
   marginTop: {
     display: "flex",
@@ -21,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginSign = () => {
   const classes = useStyles();
+
   return (
     <Container>
       <Grid container spacing={3}>

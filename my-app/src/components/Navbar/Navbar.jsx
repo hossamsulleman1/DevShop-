@@ -82,24 +82,29 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               height="25px"
               className={classes.image}
             />
-            Semptia Dev
+            Semptia
           </Typography>
           <div className={classes.grow} />
           {location.pathname === "/" && (
             <div className={classes.button}>
-              <Switch checked={darkState} onChange={handleThemeChange} />
+             
 
-              <IconButton component={Link} to="/welcome" color="inherit">
-                <FaceIcon />
-                {/* profile page */}
-              </IconButton>
-
-              <IconButton component={Link} to="/Market" color="inherit">
+              {/* <IconButton component={Link} to="/Market" color="inherit">
                 <LoyaltyIcon></LoyaltyIcon>
                 {/* market */}
-              </IconButton>
+              {/* </IconButton> */} 
             </div>
           )}
+
+
+
+<Switch checked={darkState} onChange={handleThemeChange} />
+
+<IconButton component={Link} to="/welcome" color="inherit">
+  <FaceIcon />
+  {/* profile page */}
+</IconButton>
+
           <IconButton
             component={Link}
             to="/cart"

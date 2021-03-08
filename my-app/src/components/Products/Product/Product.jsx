@@ -12,20 +12,24 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import useStyles from "./styles";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import LaunchIcon from '@material-ui/icons/Launch';
+import LaunchIcon from "@material-ui/icons/Launch";
 
-import { SemContext } from "../../../SemContext.jsx"
+import { SemContext } from "../../../SemContext.jsx";
+import Item from "./../../Item/Item";
+import { useHistory } from "react-router-dom";
 
 const Product = ({ product, onAddToCart }) => {
+  let history = useHistory();
+
   const [currentItem, setCurrentItem] = useContext(SemContext);
 
   const classes = useStyles();
 
   const handleOpenProduct = async () => {
     setCurrentItem(product);
+    console.log(currentItem);
+    history.push("/item");
   };
-
-  console.log(currentItem)
 
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
@@ -53,8 +57,8 @@ const Product = ({ product, onAddToCart }) => {
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-      <IconButton aria-label="Open Product" onClick={handleOpenProduct}>
-          <LaunchIcon/>
+        <IconButton aria-label="Open Product" onClick={handleOpenProduct}>
+          <LaunchIcon />
         </IconButton>
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
           <AddShoppingCart />

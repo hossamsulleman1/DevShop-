@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { render } from "react-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -14,7 +14,6 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { SocialIcon } from "react-social-icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
-
 
 // CONTEXT REACT
 import { SemContext } from "../../SemContext";
@@ -40,54 +39,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+
 
 function FirebaseAuth() {
+  const [authInfo, setAuthInfo] = useContext(SemContext);
+  
   const classes = useStyles();
   let history = useHistory();
 
-  const WriteAuthInfo = (user) => {
-    setAuthInfo(user);
+  useEffect(() => {
     console.log(authInfo);
-    AuthCheck(authInfo)
-  };
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
+    console.log(JSON.stringify(authInfo));
+    try {
+      console.log(authInfo.uid);
+      console.log(authInfo.photoURL);
+     
+      if (authInfo !== undefined || null) {
+        history.push("/Profile")
+      }
+    } catch (error) {
+      console.log(error);
     }
+  }, [authInfo]);
 
-    setOpen(false);
-
-
-  };
-
-  const AuthCheck = () => {
-   console.log(authInfo)
-   if (authInfo !== null || authInfo !== undefined ) {
-      console.log("authINFO!!", JSON.stringify(authInfo, null, 2));
-      history.push("/profile");
-      console.log("use effect triggered");
-  }
-
-  const [open, setOpen] = React.useState(false);
-
-  const [authInfo, setAuthInfo] = useContext(SemContext);
-
+ 
 
   return (
     <FirebaseAuthProvider {...config} firebase={firebase}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          Welcome
-        </Alert>
-      </Snackbar>
+    
 
       <div>
         <SocialIcon
@@ -112,7 +91,7 @@ function FirebaseAuth() {
               <pre>
                 {/* {JSON.stringify({ isSignedIn, user, providerId }, null, 2)} */}
 
-                {WriteAuthInfo(user)}
+                {setAuthInfo(user)}
               </pre>
             );
           }}

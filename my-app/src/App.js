@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useContext } from "react";
-
-import { Suspense, unstable_useTransition as useTransition } from "react";
-
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Navbar, Products, Cart, Checkout } from "./components";
 import { commerce } from "./lib/commerce";
 import Market from "./components/Market/Market";
-import Profile from "./components/Profile/Profile";
 import JoinUS from "./components/JoinUS/JoinUS";
 import Fonts from "./components/Css/Fonts.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Landing from "./components/Landing/Body/Landing";
 import { SemContext } from "./SemContext";
 import LoginSign from "./components/Auth/LoginSign";
-import  SignedIn from './components/Auth/SignedIn';
+import FirebaseAuth from "./components/Auth/FirebaseAuth";
+import Item from "./components/Item/Item";
+
+const Profile = lazy(() => import("./components/Profile/Profile"));
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -135,7 +134,7 @@ const App = (props) => {
               </Route>
 
               <Route path="/Welcome" exact>
-                <SignedIn/>
+                <LoginSign />
               </Route>
 
               <Route path="/Profile" exact>
@@ -146,8 +145,16 @@ const App = (props) => {
                 <JoinUS />
               </Route>
 
-              <Route path="/Home" exact>
+              <Route path="/" exact>
                 <Landing />
+              </Route>
+
+              <Route path="/auth" exact>
+                <FirebaseAuth />
+              </Route>
+
+              <Route path="/item" exact>
+                <Item />
               </Route>
             </Switch>
           </div>
