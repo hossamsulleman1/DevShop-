@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Footer from "../Footer/Footer";
 import { Grid } from "@material-ui/core";
-import { useContext } from "react";
 import { SemContext } from "../../SemContext";
 import { useHistory } from "react-router-dom";
+import PhotoGrid from "./PhotoGrid";
 
 // https://eu.puma.com/uk/en/pd/mirage-tech-trainers/381118.html?dwvar_381118_color=05&dwvar_381118_size=0280#
 const Item = () => {
@@ -12,7 +12,7 @@ const Item = () => {
   const [description, setDescription] = useState();
   const [photo, setPhoto] = useState();
   const [price, setPrice] = useState();
-  //   const [name, setName] = useState();
+  const [assets, setAssets] = useContext([]);
 
   let history = useHistory();
 
@@ -35,6 +35,7 @@ const Item = () => {
       setPrice(currentItem.price.formatted_with_symbol);
       setDescription(currentItem.description);
       setPhoto(currentItem.media.source);
+      setAssets(currentItem.assets);
     } catch (error) {
       console.log(error);
     }
@@ -48,9 +49,7 @@ const Item = () => {
         </Grid>
 
         <Grid item lg={8}>
-          {console.log(currentItem)}
-          {/* item huge image */}
-          <img src={photo} alt="" />
+          <PhotoGrid />
         </Grid>
 
         <Grid item lg={4}>
