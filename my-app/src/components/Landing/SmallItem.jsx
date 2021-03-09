@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 let image = "https://upload.wikimedia.org/wikipedia/commons/5/58/Link.svg"
 
@@ -56,13 +58,13 @@ export default function MediaControlCard() {
         </CardContent>
         <div className={classes.controls}>
           <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+          <FavoriteBorderIcon/>
           </IconButton>
-          <IconButton aria-label="play/pause">
+          {/* <IconButton aria-label="play/pause">
             <PlayArrowIcon className={classes.playIcon} />
-          </IconButton>
+          </IconButton> */}
           <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+          <AddShoppingCartIcon/>
           </IconButton>
         </div>
       </div>

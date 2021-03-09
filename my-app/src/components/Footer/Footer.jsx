@@ -2,10 +2,15 @@ import React from "react";
 import { Grid, Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import AnnouncementIcon from "@material-ui/icons/Announcement";
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles({
   margin: {
     margin: 40,
+  },
+  fab: {
+    width: 400,
   },
 });
 
@@ -65,9 +70,14 @@ const Footer = () => {
         <Grid container lg={3}>
           <Grid item lg={12}>
             {/* sign up to news letter title */}
+            <p>suscribe to our news letter for promotional news</p>
           </Grid>
           <Grid item lg={12}>
             {/* sign up button */}
+            <Fab variant="extended" className={classes.fab}>
+              Sign up to news letter
+              <AnnouncementIcon />
+            </Fab>
           </Grid>
 
           <Grid item lg={12}>

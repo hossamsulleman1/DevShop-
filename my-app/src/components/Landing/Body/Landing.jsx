@@ -171,7 +171,7 @@ const Landing = () => {
           alignItems="center"
           spacing={10}
         >
-          <Grid container lg={2}>
+          <Grid container lg={2}  xs={0}>
             {/* mini shop item  */}
             <VerticalItem />
           </Grid>
@@ -189,7 +189,7 @@ const Landing = () => {
             <VerticalItem />
           </Grid>
 
-          <Grid container lg={2}>
+          <Grid container lg={2} xs={0}>
             {/* mini shop item  */}
             <VerticalItem />
           </Grid>

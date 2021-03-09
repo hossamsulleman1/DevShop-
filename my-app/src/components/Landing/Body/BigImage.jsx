@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     marginTop: 60,
-    marginBottom:40,
+    marginBottom: 40,
   },
   details: {
     display: "flex",
@@ -53,13 +53,7 @@ export default function BigImage() {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      container
-      alignContent="center"
-      justify="center"
-      alignItems="center"
-    >
+    <Grid container alignContent="center" justify="center" alignItems="center">
       <Card elevation={0} variant="outlined" square className={classes.root}>
         <div className={classes.details}>
           <CardContent className={classes.content}>

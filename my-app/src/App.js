@@ -15,8 +15,19 @@ import { SemContext } from "./SemContext";
 import LoginSign from "./components/Auth/LoginSign";
 import FirebaseAuth from "./components/Auth/FirebaseAuth";
 import Item from "./components/Item/Item";
+import LandingPage from './components/Landing/Body/LandingPage';
+
+
+
 
 const Profile = lazy(() => import("./components/Profile/Profile"));
+
+
+
+
+
+
+
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -146,7 +157,7 @@ const App = (props) => {
               </Route>
 
               <Route path="/" exact>
-                <Landing />
+                <LandingPage />
               </Route>
 
               <Route path="/auth" exact>
