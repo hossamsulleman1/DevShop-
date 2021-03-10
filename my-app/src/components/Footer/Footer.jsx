@@ -4,13 +4,18 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
 import Fab from "@material-ui/core/Fab";
+import SocialIcons from "./SocialIcons";
 
 const useStyles = makeStyles({
   margin: {
     margin: 40,
   },
   fab: {
-    width: 400,
+    width: 300,
+    margin: 30,
+  },
+  words: {
+    margin: 30,
   },
 });
 
@@ -20,7 +25,7 @@ const Footer = () => {
   return (
     <div className={classes.margin}>
       <Divider />
-      <Grid container>
+      <Grid container justify="center" alignItems="center">
         <Grid container lg={4}>
           <Grid item lg={12}>
             {/* logo*/}
@@ -70,39 +75,15 @@ const Footer = () => {
         <Grid container lg={3}>
           <Grid item lg={12}>
             {/* sign up to news letter title */}
-            <p>suscribe to our news letter for promotional news</p>
           </Grid>
           <Grid item lg={12}>
             {/* sign up button */}
-            <Fab variant="extended" className={classes.fab}>
-              Sign up to news letter
-              <AnnouncementIcon />
-            </Fab>
           </Grid>
 
           <Grid item lg={12}>
             {/* folllow us title */}
           </Grid>
 
-          <Grid item lg={2}>
-            {/* folllow us title */}
-          </Grid>
-          <Grid item lg={2}>
-            {/* socials */}
-          </Grid>
-          <Grid item lg={2}>
-            {/* socials */}
-          </Grid>
-          <Grid item lg={2}>
-            {/* socials */}
-          </Grid>
-          <Grid item lg={2}>
-            {/* socials */}
-          </Grid>
-
-          <Grid item lg={2}>
-            {/* socials */}
-          </Grid>
           <Grid item xs={12}>
             {/* divider */}
           </Grid>
@@ -116,19 +97,41 @@ const Footer = () => {
       {/* divider */}
 
       <Grid container>
-        <Grid item lg={1 / 3} xs={12}>
-          {/* english stamp language */}
-        </Grid>
+        <div className="flexWrap">
+          <div>
+            <Typography
+              className={classes.words}
+              variant="body2"
+              color="textSecondary"
+            >
+              Suscribe to our news letter for promotional news
+            </Typography>
+            <Fab variant="extended" className={classes.fab}>
+              Sign up to news letter
+              <AnnouncementIcon />
+            </Fab>
+          </div>
 
-        <Grid item lg={1 / 3} xs={12}>
-          {/* rights 2020 ect */}
-          <p className="HomeTitleMedium">Rights 2021 Semptia Dev ©️</p>
-        </Grid>
+        
 
-        <Grid item lg={1 / 3} xs={12}>
-          {/* cookie notice link */}
-          {/* another link */}
-        </Grid>
+          <div>
+            <Typography
+              className={classes.words}
+              variant="body2"
+              color="textSecondary"
+            >
+              Follow Us On Social Media
+            </Typography>
+
+            <SocialIcons />
+          </div>
+
+
+          <div>
+            <p className="HomeTitleMedium">Rights 2021 Semptia Dev ©️</p>
+          </div>
+
+        </div>
       </Grid>
     </div>
   );

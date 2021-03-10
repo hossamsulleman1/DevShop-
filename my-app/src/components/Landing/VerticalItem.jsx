@@ -17,14 +17,17 @@ let image = "https://upload.wikimedia.org/wikipedia/commons/5/58/Link.svg";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200,
+    maxWidth: 220,
     margin: 40,
   },
   media: {
     height: 140,
+    width:"100%",
   },
   fab: {
     width: 600,
+    marginBottom:10,
+    marginLeft:10,
   },
 });
 
