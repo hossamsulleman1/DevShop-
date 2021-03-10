@@ -55,8 +55,8 @@ function FirebaseAuth() {
       console.log(authInfo.photoURL);
      
       if (authInfo !== undefined || null) {
-        // history.push("/Profile")
-        history.push("/Welcome")
+        history.push("/Profile")
+        
       }
     } catch (error) {
       console.log(error);
