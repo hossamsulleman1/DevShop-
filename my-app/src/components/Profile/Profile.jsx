@@ -73,7 +73,7 @@ function Profile(props) {
               <circularProgress />
             </Grid>
           ),
-          history.push("/auth")
+          history.push("/Welcome")
         );
       }
       setPhotoURL(authInfo.photoURL);
