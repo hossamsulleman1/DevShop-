@@ -15,8 +15,10 @@ import LoginSign from "./components/Auth/LoginSign";
 import FirebaseAuth from "./components/Auth/FirebaseAuth";
 import Item from "./components/Item/Item";
 import LandingKing from "./components/Landing/Body/LandingKing";
+import BottomBar from './components/Navbar/BottomBar';
 
 const Profile = lazy(() => import("./components/Profile/Profile"));
+
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -106,12 +108,16 @@ const App = (props) => {
               handleDrawerToggle={handleDrawerToggle}
             />
             <Switch>
+            
+           
               <Route exact path="/Shop">
                 <Products
                   products={products}
                   onAddToCart={handleAddToCart}
                   handleUpdateCartQty
                 />
+                
+                <BottomBar/>
               </Route>
               <Route exact path="/cart">
                 <Cart

@@ -22,6 +22,12 @@ import Link from "@material-ui/core/Link";
 import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
 import ShuffleIcon from "@material-ui/icons/Shuffle";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import HomeIcon from "@material-ui/icons/Home";
+import FaceIcon from "@material-ui/icons/Face";
+import { ShoppingCart } from "@material-ui/icons";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Badge from "@material-ui/core/Badge";
+import FlashOffIcon from "@material-ui/icons/FlashOff";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -59,26 +65,53 @@ export default function BottomAppBar() {
 
   return (
     <React.Fragment>
-      <p>hi</p>
-
       <CssBaseline />
 
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
-    
-          <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <SettingsIcon></SettingsIcon>
+          <IconButton edge="start" aria-label="open drawer">
+            <MenuIcon />
+          </IconButton>
+
+          <IconButton edge="start" aria-label="open drawer">
+            <FaceIcon />
+          </IconButton>
+
+          <IconButton edge="start" aria-label="open drawer">
+            <FlashOffIcon />
+          </IconButton>
+
+        
+
+
+
+<IconButton>
+            <LocalMallIcon />
+            {/* market */}
+          </IconButton>
+          <IconButton>
+            <LocalMallIcon />
+            {/* market */}
+          </IconButton>
+
+          <IconButton>
+            {/* <Badge badgeContent={totalItems} color="secondary"> */}
+            <ShoppingCart />
+            {/* </Badge> */}
           </IconButton>
 
           <Fab
             color="secondary"
             aria-label="add"
             edge="end"
+            component={Link}
+            to="/"
             className={classes.fabButton}
           >
-            <ShuffleIcon />
+            <HomeIcon />
             <Link to="/Connect"></Link>
           </Fab>
+
 
           <div className={classes.grow} />
         </Toolbar>

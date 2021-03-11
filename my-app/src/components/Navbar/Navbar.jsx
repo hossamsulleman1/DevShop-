@@ -26,6 +26,8 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     setDarkState(!darkState);
   };
 
+  
+
   const [darkState, setDarkState] = useContext(SemContext);
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);

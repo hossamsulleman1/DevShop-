@@ -17,6 +17,7 @@ import LaunchIcon from "@material-ui/icons/Launch";
 import { SemContext } from "../../../SemContext.jsx";
 import Item from "./../../Item/Item";
 import { useHistory } from "react-router-dom";
+import BottomDrawerShop from "../../Button/BottomDrawerShop";
 
 const Product = ({ product, onAddToCart }) => {
   let history = useHistory();
@@ -57,9 +58,11 @@ const Product = ({ product, onAddToCart }) => {
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Open Product" onClick={handleOpenProduct}>
-          <LaunchIcon />
-        </IconButton>
+        <BottomDrawerShop
+          image={product.media.source}
+          title={product.name}
+          itemPrice={product.price.formatted}
+        />
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
           <AddShoppingCart />
         </IconButton>
