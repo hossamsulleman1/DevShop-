@@ -5,6 +5,10 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
+import Fab from "@material-ui/core/Fab";
+import ShopTwoIcon from "@material-ui/icons/ShopTwo";
+import Button from "@material-ui/core/Button";
+import BottomDrawerHome from "./../../Button/BottomDrawerHome";
 
 const useStyles = makeStyles({
   div: {
@@ -23,6 +27,12 @@ const useStyles = makeStyles({
     fontWeight: 900,
     fontSize: "5vh",
   },
+  buttons: {
+    margin: 10,
+  },
+  icon: {
+    margin: 10,
+  },
 });
 
 const ImageDiv = () => {
@@ -35,8 +45,21 @@ const ImageDiv = () => {
       <Typography className={classes.title}>STREET-WEAR.</Typography>
       <Typography className={classes.title}>ANY-WEAR.</Typography>
 
+      <Grid container justify="center" alignItems="center">
+        <div className={classes.buttons}>
+          <Fab variant="extended">
+            Shop All
+            <ShopTwoIcon className={classes.icon} />
+          </Fab>
+        </div>
+
+        <div className={classes.buttons}>
+          <BottomDrawerHome />
+        </div>
+      </Grid>
+
       <div className="next-page">
-        <IconButton  size="medium" className={classes.nextPage}>
+        <IconButton size="medium" className={classes.nextPage}>
           <ExpandMoreIcon />
         </IconButton>
       </div>
