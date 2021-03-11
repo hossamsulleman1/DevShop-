@@ -5,11 +5,28 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // fix to add to array of states
 
 useEffect(() => {
-  effect;
-  return () => {
-    cleanup;
-  };
+  // push to firebase try function
+  console.log(currentItem);
+    console.log("useEffect");
+    try {
+      if (authInfo !== null || undefined)  {
+        // push to db tree called fav
+      }
+      setFavourites(currentItem.id)
+
+    } catch (error) {
+      console.log(error);
+    }
 }, [favourites]);
+
+const addToFavHandle () {
+
+setFavourites()
+
+
+
+}
+
 
 const Favourite = () => {
   const [favourites, setFavourites] = useContext(SemContext);
