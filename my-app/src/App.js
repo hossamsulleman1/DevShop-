@@ -102,10 +102,7 @@ const App = (props) => {
         <Router>
           <div style={{ display: "flex" }}>
             <CssBaseline />
-            <Navbar
-              totalItems={cart.total_items}
-              handleDrawerToggle={handleDrawerToggle}
-            />
+
             <Switch>
               <Route exact path="/Shop">
                 <Products
@@ -117,6 +114,10 @@ const App = (props) => {
                 <BottomBar />
               </Route>
               <Route exact path="/cart">
+                <Navbar
+                  totalItems={cart.total_items}
+                  handleDrawerToggle={handleDrawerToggle}
+                />
                 <Cart
                   cart={cart}
                   onUpdateCartQty={handleUpdateCartQty}
@@ -125,6 +126,10 @@ const App = (props) => {
                 />
               </Route>
               <Route path="/checkout" exact>
+                <Navbar
+                  totalItems={cart.total_items}
+                  handleDrawerToggle={handleDrawerToggle}
+                />
                 <Checkout
                   cart={cart}
                   order={order}
@@ -133,6 +138,10 @@ const App = (props) => {
                 />
               </Route>
               <Route path="/Market" exact>
+                <Navbar
+                  totalItems={cart.total_items}
+                  handleDrawerToggle={handleDrawerToggle}
+                />
                 <Market />
               </Route>
 
@@ -141,6 +150,10 @@ const App = (props) => {
               </Route>
 
               <Route path="/Profile" exact>
+                <Navbar
+                  totalItems={cart.total_items}
+                  handleDrawerToggle={handleDrawerToggle}
+                />
                 <Profile />
               </Route>
 
@@ -149,6 +162,10 @@ const App = (props) => {
               </Route>
 
               <Route path="/" exact>
+                <Navbar
+                  totalItems={cart.total_items}
+                  handleDrawerToggle={handleDrawerToggle}
+                />
                 <LandingKing />
               </Route>
 

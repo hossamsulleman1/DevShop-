@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 60,
   },
   PaddingLeft: {
-    marginLeft: 80,
-    marginRight: 80,
+    marginLeft: 60,
+    marginRight: 60,
   },
   HeadingTitle: {
     fontFamily: ["Inter", "sans-serif"].join(","),
@@ -68,7 +68,7 @@ const LandingPage = () => {
             alignItems="center"
             className={classes.PaddingLeft}
             xs={12}
-            lg={7}
+            lg={6}
           >
             {/* body */}
 
@@ -77,7 +77,7 @@ const LandingPage = () => {
             </Typography>
             <Divider className={classes.Divider} />
             <Typography variant="body2" color="textSecondary">
-             We belive the industry is outdated 
+              We belive the industry is outdated
             </Typography>
 
             <Typography variant="body2" color="textSecondary">

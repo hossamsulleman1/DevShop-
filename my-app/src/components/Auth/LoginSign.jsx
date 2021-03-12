@@ -7,6 +7,8 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { Fab } from "@material-ui/core/Fab";
 import FirebaseAuth from "./FirebaseAuth";
+import IconButton from "@material-ui/core/IconButton";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   marginTop: {
@@ -20,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
 const LoginSign = () => {
   const classes = useStyles();
 
+  function HomeHandle() {
+    history.push("/");
+  }
+
+  // buttons
+
+  let history = useHistory();
+
   return (
     <Container>
       <Grid container spacing={3}>
@@ -30,9 +40,10 @@ const LoginSign = () => {
             <br />
             <br />
             <br />
+            <IconButton onClick={HomeHandle}>
+              <ArrowBackIcon />
+            </IconButton>
 
-            <ArrowBackIcon />
-            {/* <p className="HomeTitle">{authInfo.displayName}</p> */}
             <p className="HomeTitle">One Click</p>
           </div>
 
@@ -49,13 +60,10 @@ const LoginSign = () => {
         </Grid>
         <Grid item xs={6}>
           <div className="avatardiv">
-            {/* <Avatar className={classes.large} src={authInfo.photoURL}> */}H
-            {/* </Avatar> */}
             <div className="friendsdiv">
               <div className="justifycenter">
                 {/* <Divider></Divider> */}
 
-                <p className="SubHeading">ALL FRIENDS</p>
                 <br></br>
               </div>
 
