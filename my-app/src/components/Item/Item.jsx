@@ -10,6 +10,7 @@ import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 
 // https://eu.puma.com/uk/en/pd/mirage-tech-trainers/381118.html?dwvar_381118_color=05&dwvar_381118_size=0280#
 
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   fab: {
     margin: 40,
     width: "50%",
+    marginBottom: 5,
   },
   img: {
     width: "45vh",
@@ -41,8 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ image, itemPrice, title }) => {
+const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
   const [currentItem, setCurrentItem] = useContext(SemContext);
+  const [purchaseUrl, setPurchaseUrl] = useContext(SemContext);
+
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [photo, setPhoto] = useState();
@@ -54,8 +58,21 @@ const Item = ({ image, itemPrice, title }) => {
 
   let history = useHistory();
 
+  function BuyNow({ product, currentItem }) {
+    try {
+      window.location.replace(purchaseUrl);
+      console.log("Redirect Triggered");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     console.log(currentItem);
+    // SAME ITEM DIF PATHS FROM CONEXT VS PROPS  ^ and under
+    console.log(product);
+    setPurchaseUrl(product.checkout_url.checkout);
+    let url = product.checkout_url.checkout;
     console.log("useEffect");
     try {
       if (currentItem == null || undefined) {
@@ -68,22 +85,23 @@ const Item = ({ image, itemPrice, title }) => {
           history.push("/shop")
         );
       }
-
-      setName(currentItem.name);
-      setPrice(currentItem.price.formatted_with_symbol);
-      setDescription(currentItem.description);
-      setPhoto(currentItem.media.source);
-      setAssets(currentItem.assets);
-      setProductId(currentItem.id);
-      // setVariants(currentItem.variants)
-      // access array for sizes
-      // setSizes(currentItem.variants.sizes)
     } catch (error) {
       console.log(error);
     }
   }, [currentItem]);
 
   const classes = useStyles();
+
+
+  
+
+  function AddToCart({ onAddtoCart, product }) {
+    try {
+      onAddToCart(product.id, 1);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -129,9 +147,18 @@ const Item = ({ image, itemPrice, title }) => {
       </Grid>
 
       <Grid container justify="center" alignItems="center" xs={12}>
-        <Fab className={classes.fab} variant="extended">
+        <Fab onClick={AddToCart} className={classes.fab} variant="extended">
+          <ShoppingBasketIcon className={classes.icon} />
+          basket
+        </Fab>
+        <Fab
+          onClick={BuyNow}
+          className={classes.fab}
+          color="secondary "
+          variant="extended"
+        >
           <ShopIcon className={classes.icon} />
-          Buy
+          Buy now
         </Fab>
       </Grid>
 

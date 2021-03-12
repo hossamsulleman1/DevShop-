@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import clsx from "clsx";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -16,10 +16,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import { green } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import Item from "../Item/Item";
-import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
-import { SemContext } from "./../../SemContext";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -78,26 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BottomDrawerShop({
-  handleAddToCart,
-  product,
-  image,
-  itemPrice,
-  title,
-  onAddToCart,
-}) {
-  let history = useHistory();
-
-  const [currentItem, setCurrentItem] = useContext(SemContext);
-  const [productState, setProductState] = useContext(SemContext);
-
-  const handleOpenProduct = async () => {
-    setCurrentItem(product);
-    setProductState(product);
-    console.log(currentItem);
-    history.push("/item");
-  };
-
+function BottomDrawerHome() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -123,30 +100,35 @@ function BottomDrawerShop({
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Grid container justify="center" alignItems="center">
-        <IconButton onClick={toggleDrawer(anchor, false)}>
+        <IconButton>
           <KeyboardArrowDownIcon />
           {/* toggle drawer close */}
         </IconButton>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={12}>
+          
+        </Grid>
+
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ "aria-label": "search" }}
+          />
+        </div>
       </Grid>
 
       <List>
-        {/* DRILL */}
-        <Item
-          product={product}
-          title={title}
-          itemPrice={itemPrice}
-          image={image}
-          handleAddToCart={handleAddToCart}
-          onAddToCart={onAddToCart}
-        />
-        {/* DRILL */}
-
-        {/* put div squares for dif genres and things like that sale ect  */}
+      
       </List>
     </div>
   );
@@ -155,13 +137,13 @@ function BottomDrawerShop({
     <div>
       {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <IconButton
+          <Button
             variant="contained"
             color="secondary"
-            onClick={toggleDrawer(anchor, true)   }
+            onClick={toggleDrawer(anchor, true)}
           >
-            <OpenInBrowserIcon  />
-          </IconButton>
+            Explore
+          </Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -175,4 +157,4 @@ function BottomDrawerShop({
   );
 }
 
-export default BottomDrawerShop;
+export default BottomDrawerHome;

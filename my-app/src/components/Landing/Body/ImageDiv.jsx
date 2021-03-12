@@ -9,6 +9,7 @@ import Fab from "@material-ui/core/Fab";
 import ShopTwoIcon from "@material-ui/icons/ShopTwo";
 import Button from "@material-ui/core/Button";
 import BottomDrawerHome from "./../../Button/BottomDrawerHome";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   div: {
@@ -37,6 +38,11 @@ const useStyles = makeStyles({
 
 const ImageDiv = () => {
   const classes = useStyles();
+  let history = useHistory();
+
+  function ShopHandle() {
+    history.push("/shop");
+  }
 
   return (
     <div className={classes.div} src={Image}>
@@ -47,7 +53,7 @@ const ImageDiv = () => {
 
       <Grid container justify="center" alignItems="center">
         <div className={classes.buttons}>
-          <Fab variant="extended">
+          <Fab onClick={ShopHandle} variant="extended">
             Shop All
             <ShopTwoIcon className={classes.icon} />
           </Fab>

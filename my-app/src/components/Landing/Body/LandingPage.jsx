@@ -1,7 +1,5 @@
 import React from "react";
 import { Grid, Divider } from "@material-ui/core";
-import VertialItem from "../VerticalItem";
-import SmallItem from "../SmallItem";
 import { makeStyles } from "@material-ui/core/styles";
 import SocialIcons from "./../../Footer/SocialIcons";
 import Footer from "../../Footer/Footer";
@@ -12,6 +10,7 @@ import { KeyboardArrowRight } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import { KeyboardArrowLeft } from "@material-ui/icons";
 import BestSelling from "../Body/BestSelling";
+import BasketLook from "./BasketLook";
 
 const useStyles = makeStyles((theme) => ({
   largePhoto: {
@@ -74,12 +73,11 @@ const LandingPage = () => {
             {/* body */}
 
             <Typography className={classes.HeadingTitle}>
-              Live life with us{" "}
+              In with the new.
             </Typography>
             <Divider className={classes.Divider} />
             <Typography variant="body2" color="textSecondary">
-              chose from a range of streetware to with your daily style. Dont be
-              afraid to rock the hustle in style.
+             We belive the industry is outdated 
             </Typography>
 
             <Typography variant="body2" color="textSecondary">
@@ -95,8 +93,7 @@ const LandingPage = () => {
           <Grid container justify="center" alignItems="center" xs={12} lg={4}>
             {/* side bar / Bottom */}
 
-            <VertialItem />
-            <VertialItem />
+            <BasketLook />
 
             <div>{/* title */}</div>
 

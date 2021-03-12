@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Navbar, Products, Cart, Checkout } from "./components";
+import { Navbar, Products, Checkout, Cart } from "./components";
 import { commerce } from "./lib/commerce";
 import Market from "./components/Market/Market";
 import JoinUS from "./components/JoinUS/JoinUS";
@@ -15,10 +15,9 @@ import LoginSign from "./components/Auth/LoginSign";
 import FirebaseAuth from "./components/Auth/FirebaseAuth";
 import Item from "./components/Item/Item";
 import LandingKing from "./components/Landing/Body/LandingKing";
-import BottomBar from './components/Navbar/BottomBar';
+import BottomBar from "./components/Navbar/BottomBar";
 
 const Profile = lazy(() => import("./components/Profile/Profile"));
-
 
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -108,16 +107,14 @@ const App = (props) => {
               handleDrawerToggle={handleDrawerToggle}
             />
             <Switch>
-            
-           
               <Route exact path="/Shop">
                 <Products
                   products={products}
                   onAddToCart={handleAddToCart}
                   handleUpdateCartQty
                 />
-                
-                <BottomBar/>
+
+                <BottomBar />
               </Route>
               <Route exact path="/cart">
                 <Cart

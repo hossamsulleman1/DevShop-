@@ -28,6 +28,8 @@ import { ShoppingCart } from "@material-ui/icons";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Badge from "@material-ui/core/Badge";
 import FlashOffIcon from "@material-ui/icons/FlashOff";
+import { useHistory } from "react-router-dom";
+import DarkMode from "../Button/DarkMode";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -63,6 +65,36 @@ const useStyles = makeStyles((theme) => ({
 export default function BottomAppBar() {
   const classes = useStyles();
 
+  // buttons function
+
+  function ShoppingCartHandle() {
+    history.push("/cart");
+  }
+
+  function ddkCartHandle() {
+    history.push("/profile");
+  }
+
+  function ddk2CartHandle() {
+    history.push("/cart");
+  }
+
+  function ProfileHandle() {
+    history.push("/profile");
+  }
+
+  function CartHandle() {
+    history.push("/cart");
+  }
+
+  function HomeHandle() {
+    history.push("/");
+  }
+
+  // buttons
+
+  let history = useHistory();
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -73,28 +105,15 @@ export default function BottomAppBar() {
             <MenuIcon />
           </IconButton>
 
-          <IconButton edge="start" aria-label="open drawer">
+          <IconButton
+            onClick={ProfileHandle}
+            edge="start"
+            aria-label="open drawer"
+          >
             <FaceIcon />
           </IconButton>
 
-          <IconButton edge="start" aria-label="open drawer">
-            <FlashOffIcon />
-          </IconButton>
-
-        
-
-
-
-<IconButton>
-            <LocalMallIcon />
-            {/* market */}
-          </IconButton>
-          <IconButton>
-            <LocalMallIcon />
-            {/* market */}
-          </IconButton>
-
-          <IconButton>
+          <IconButton onClick={CartHandle} edge="start">
             {/* <Badge badgeContent={totalItems} color="secondary"> */}
             <ShoppingCart />
             {/* </Badge> */}
@@ -104,16 +123,15 @@ export default function BottomAppBar() {
             color="secondary"
             aria-label="add"
             edge="end"
-            component={Link}
-            to="/"
+            onClick={HomeHandle}
             className={classes.fabButton}
           >
             <HomeIcon />
-            <Link to="/Connect"></Link>
+            <Link to="/"></Link>
           </Fab>
 
-
           <div className={classes.grow} />
+          <DarkMode edge="end" />
         </Toolbar>
       </AppBar>
     </React.Fragment>

@@ -23,14 +23,11 @@ const Product = ({ product, onAddToCart }) => {
   let history = useHistory();
 
   const [currentItem, setCurrentItem] = useContext(SemContext);
+  const [productState, setProductState] = useContext(SemContext);
 
   const classes = useStyles();
 
-  const handleOpenProduct = async () => {
-    setCurrentItem(product);
-    console.log(currentItem);
-    history.push("/item");
-  };
+  
 
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
@@ -47,7 +44,7 @@ const Product = ({ product, onAddToCart }) => {
             {product.name}
           </Typography>
           <Typography gutterBottom variant="h5" component="h2">
-            ${product.price.formatted}
+            £{product.price.formatted}
           </Typography>
         </div>
         <Typography
@@ -58,11 +55,17 @@ const Product = ({ product, onAddToCart }) => {
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
+        {/* DRILL  */}
         <BottomDrawerShop
           image={product.media.source}
           title={product.name}
           itemPrice={product.price.formatted}
+          product={product}
+          handleAddToCart={handleAddToCart}
+          onAddToCart={onAddToCart}
         />
+        {/* DRILL */}
+
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
           <AddShoppingCart />
         </IconButton>

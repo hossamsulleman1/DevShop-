@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: "1.7vh",
   },
-})); 
+}));
 
 function BestSelling(props) {
   const classes = useStyles();
@@ -46,11 +46,10 @@ function BestSelling(props) {
 
       <Grid container justify="center" alignItems="center">
         <div className={classes.container}>
-          <Hidden>
-            <IconButton disabled>
-              <KeyboardArrowLeft />
-            </IconButton>
-          </Hidden>
+          
+          <IconButton disabled>
+            <KeyboardArrowLeft />
+          </IconButton>
 
           <Hidden only={["lg", "xs"]}>
             <Product
@@ -59,7 +58,7 @@ function BestSelling(props) {
               title="Tiger"
             />
           </Hidden>
-          <Hidden only={["sm", "xs"]}>
+          <Hidden only={["sm", "xs", "xl"]}>
             <Product
               price="123"
               description="this is the coolest thing ever"
@@ -107,11 +106,9 @@ function BestSelling(props) {
             />
           </Hidden>
 
-          <Hidden only="lg">
-            <IconButton disabled>
-              <KeyboardArrowRight />
-            </IconButton>
-          </Hidden>
+          <IconButton disabled>
+            <KeyboardArrowRight />
+          </IconButton>
         </div>
       </Grid>
     </div>

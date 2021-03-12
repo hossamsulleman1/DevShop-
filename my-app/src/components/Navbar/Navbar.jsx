@@ -20,13 +20,12 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
 
 import { SemContext } from "../../SemContext";
+import DarkMode from "../Button/DarkMode";
 
 const PrimarySearchAppBar = ({ totalItems }) => {
   const handleThemeChange = () => {
     setDarkState(!darkState);
   };
-
-  
 
   const [darkState, setDarkState] = useContext(SemContext);
 
@@ -89,23 +88,19 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           <div className={classes.grow} />
           {location.pathname === "/" && (
             <div className={classes.button}>
-             
-
               {/* <IconButton component={Link} to="/Market" color="inherit">
                 <LoyaltyIcon></LoyaltyIcon>
                 {/* market */}
-              {/* </IconButton> */} 
+              {/* </IconButton> */}
             </div>
           )}
 
+          <DarkMode />
 
-
-<Switch checked={darkState} onChange={handleThemeChange} />
-
-<IconButton component={Link} to="/welcome" color="inherit">
-  <FaceIcon />
-  {/* profile page */}
-</IconButton>
+          <IconButton component={Link} to="/welcome" color="inherit">
+            <FaceIcon />
+            {/* profile page */}
+          </IconButton>
 
           <IconButton
             component={Link}
