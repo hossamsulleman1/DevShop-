@@ -2,18 +2,29 @@ import React from "react";
 import clsx from "clsx";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
 import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
+import { green } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { Fab } from "@material-ui/core";
-import { MenuIcon } from "@material-ui/icons/Menu";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
+  },
+  icon: {
+    margin: 10,
   },
   fullList: {
     width: "auto",
@@ -119,7 +130,31 @@ function BottomDrawerCat() {
         </div>
       </Grid>
 
-      <List></List>
+      <List>
+        <Grid container xs={12}>
+          {/* search  */}
+        </Grid>
+
+        <Grid container justify="center" alignItems="center">
+          <Grid container xs={6}>
+            <div className={classes.genre}></div>
+          </Grid>
+
+          <Grid container xs={6}>
+            <div className={classes.genre}></div>
+          </Grid>
+
+          <Grid container xs={6}>
+            <div className={classes.genre}></div>
+          </Grid>
+
+          <Grid container xs={6}>
+            <div className={classes.genre}></div>
+          </Grid>
+        </Grid>
+
+        {/* put div squares for dif genres and things like that sale ect  */}
+      </List>
     </div>
   );
 
@@ -128,12 +163,12 @@ function BottomDrawerCat() {
       {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Fab
-            edge="start"
-            aria-label="open drawer"
+            variant="contained"
+            color="secondary"
             onClick={toggleDrawer(anchor, true)}
-            variant="small"
           >
-            <MenuIcon />
+            Explore
+            <ExploreIcon className={classes.icon} />
           </Fab>
           <Drawer
             anchor={anchor}

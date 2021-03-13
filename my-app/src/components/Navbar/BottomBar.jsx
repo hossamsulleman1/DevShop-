@@ -30,7 +30,7 @@ import Badge from "@material-ui/core/Badge";
 import FlashOffIcon from "@material-ui/icons/FlashOff";
 import { useHistory } from "react-router-dom";
 import DarkMode from "../Button/DarkMode";
-// import  BottomDrawerCat  from "../Button/BottomDrawerCat";
+import BottomDrawerCat from "../Button/BottomDrawerCat";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     paddingBottom: 50,
+  },
+  marginRight: {
+    marginRight: 5,
   },
   list: {
     marginBottom: theme.spacing(2),
@@ -102,21 +105,7 @@ export default function BottomAppBar({ totalItems }) {
 
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
-          {/* <BottomDrawerCat /> */}
-
-          <IconButton
-            onClick={ProfileHandle}
-            edge="start"
-            aria-label="open drawer"
-          >
-            <FaceIcon />
-          </IconButton>
-
-          <IconButton onClick={CartHandle} edge="start">
-            <Badge badgeContent={totalItems} color="secondary">
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
+          <BottomDrawerCat />
 
           <Fab
             color="secondary"
@@ -130,6 +119,24 @@ export default function BottomAppBar({ totalItems }) {
           </Fab>
 
           <div className={classes.grow} />
+          <IconButton
+            onClick={ProfileHandle}
+            edge="end"
+            aria-label="open drawer"
+          >
+            <FaceIcon />
+          </IconButton>
+
+          <IconButton onClick={CartHandle} edge="end">
+            <Badge
+              className={classes.marginRight}
+              badgeContent={totalItems}
+              color="secondary"
+            >
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
+
           <DarkMode edge="end" />
         </Toolbar>
       </AppBar>

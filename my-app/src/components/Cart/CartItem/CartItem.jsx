@@ -1,4 +1,6 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import React, { Component } from "react";
+
 import {
   Typography,
   Button,
@@ -14,7 +16,7 @@ import Loading from "../../Button/Loading";
 const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const classes = useStyles();
 
-  if (!item) return <Loading />;
+  if (item == null) return <Loading />;
 
   const handleUpdateCartQty = (lineItemId, newQuantity) =>
     onUpdateCartQty(lineItemId, newQuantity);
@@ -24,9 +26,10 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   return (
     <Card className="cart-item">
       <CardMedia
-        image={item.media.source}
+        image={item.media ? item.media.source : "fallback"}
         alt={item.name}
         className={classes.media}
+        
       />
       <CardContent className={classes.cardContent}>
         <Typography variant="h4">{item.name}</Typography>

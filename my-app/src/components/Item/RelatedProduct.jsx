@@ -11,7 +11,7 @@ const RelatedProduct = () => {
 
   return (
     <Grid container justify="center" spacing={4}>
-      {relatedProducts.slice(0, 5).map((product) => (
+      {relatedProducts.map((product) => (
         <Grid
           key={product.id}
           justifyContent="center"

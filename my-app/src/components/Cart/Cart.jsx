@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react'
 import { Container, Typography, Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Fab from "@material-ui/core/Fab";
@@ -8,7 +8,7 @@ import useStyles from "./styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Loading from "../Button/Loading";
 
-const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
+const Cart = ({  cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const classes = useStyles();
 
   const handleEmptyCart = () => onEmptyCart();

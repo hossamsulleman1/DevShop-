@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 40,
     width: "50%",
     marginBottom: 5,
+    maxWidth: 500,
   },
   img: {
     width: "35vh",
@@ -68,28 +69,29 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
 
   let history = useHistory();
 
-  function BuyNow() {
-    try {
-      window.location.replace(purchaseUrl);
-      console.log("Redirect Triggered");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  function AddToCart({ onAddtoCart, product }) {
-    try {
-      onAddToCart(product.id, 1);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
+    // remove if not fixed
+    console.log(product.id);
+    setProductId(product.id);
     // SAME ITEM DIF PATHS FROM CONEXT VS PROPS  ^ and under
     setPurchaseUrl(product.checkout_url.checkout);
     setRelatedProducts(product.related_products);
   }, [currentItem]);
+
+  function BuyNow() {
+    console.log(product.checkout_url.checkout);
+    window.location.replace(product.checkout_url.checkout);
+  }
+
+  function AddToCart({ onAddtoCart, product }) {
+    try {
+      // onAddToCart(productId, 1);
+      console.log(product.id);
+      console.log(productId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const classes = useStyles();
 
