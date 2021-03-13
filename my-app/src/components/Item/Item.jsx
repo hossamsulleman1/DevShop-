@@ -12,6 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 
+import { Link } from "react-router-dom";
+import Loading from "../Button/Loading";
+import RelatedProducts from "./RelatedProducts";
+
 // https://eu.puma.com/uk/en/pd/mirage-tech-trainers/381118.html?dwvar_381118_color=05&dwvar_381118_size=0280#
 
 const useStyles = makeStyles((theme) => ({
@@ -35,17 +39,23 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 5,
   },
   img: {
-    width: "45vh",
-    height: "auto",
+    width: "35vh",
+    height: "35vh",
   },
   icon: {
     marginRight: 20,
+  },
+  Pci: {
+    width: "40%",
+    marginTop: 10,
+    maxWidth: 400,
   },
 }));
 
 const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
   const [currentItem, setCurrentItem] = useContext(SemContext);
   const [purchaseUrl, setPurchaseUrl] = useContext(SemContext);
+  const [relatedProduts, setRelatedProducts] = useContext(SemContext);
 
   const [name, setName] = useState();
   const [description, setDescription] = useState();
@@ -58,7 +68,7 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
 
   let history = useHistory();
 
-  function BuyNow({ product, currentItem }) {
+  function BuyNow() {
     try {
       window.location.replace(purchaseUrl);
       console.log("Redirect Triggered");
@@ -67,34 +77,6 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
     }
   }
 
-  useEffect(() => {
-    console.log(currentItem);
-    // SAME ITEM DIF PATHS FROM CONEXT VS PROPS  ^ and under
-    console.log(product);
-    setPurchaseUrl(product.checkout_url.checkout);
-    let url = product.checkout_url.checkout;
-    console.log("useEffect");
-    try {
-      if (currentItem == null || undefined) {
-        return (
-          (
-            <Grid justify="center" alignItems="center">
-              <circularProgress />
-            </Grid>
-          ),
-          history.push("/shop")
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [currentItem]);
-
-  const classes = useStyles();
-
-
-  
-
   function AddToCart({ onAddtoCart, product }) {
     try {
       onAddToCart(product.id, 1);
@@ -102,6 +84,14 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    // SAME ITEM DIF PATHS FROM CONEXT VS PROPS  ^ and under
+    setPurchaseUrl(product.checkout_url.checkout);
+    setRelatedProducts(product.related_products);
+  }, [currentItem]);
+
+  const classes = useStyles();
 
   return (
     <>
@@ -151,6 +141,7 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
           <ShoppingBasketIcon className={classes.icon} />
           basket
         </Fab>
+
         <Fab
           onClick={BuyNow}
           className={classes.fab}
@@ -160,21 +151,20 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
           <ShopIcon className={classes.icon} />
           Buy now
         </Fab>
-      </Grid>
-
-      <Grid container justify="center" alignItems="center" xs={12}>
-        <p className={classes.title}> you may also like </p>
 
         <Grid container justify="center" alignItems="center" xs={12}>
-          <div>
-            <IconButton>
-              <ArrowLeft />
-            </IconButton>
+          <img
+            src="https://www.acunetix.com/wp-content/uploads/2012/10/PCI-DSS.png"
+            alt="Pci Compliance"
+            component={Link}
+            to="https://www.pcicomplianceguide.org/faq/#1"
+            className={classes.Pci}
+            href="https://www.pcicomplianceguide.org/faq/#1"
+          />
 
-            <IconButton>
-              <ArrowRight />
-            </IconButton>
-          </div>
+          <RelatedProducts />
+
+          {/* link this link in image  */}
         </Grid>
       </Grid>
     </>

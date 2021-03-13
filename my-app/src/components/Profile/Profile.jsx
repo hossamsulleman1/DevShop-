@@ -15,6 +15,7 @@ import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import { SemContext } from "../../SemContext";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import Loading from "../Button/Loading";
 
 const useStyles = makeStyles((theme) => ({
   divider: {
@@ -70,7 +71,7 @@ function Profile(props) {
         return (
           (
             <Grid justify="center" alignItems="center">
-              <circularProgress />
+              <Loading />
             </Grid>
           ),
           history.push("/Welcome")

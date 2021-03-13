@@ -6,6 +6,7 @@ import { commerce } from '../../../lib/commerce';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import useStyles from './styles';
+import Loading from '../../Button/Loading';
 
 const steps = ['Shipping address', 'Payment details'];
 
@@ -53,7 +54,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
     </>
   ) : (
     <div className={classes.spinner}>
-      <CircularProgress />
+      <Loading/>
     </div>
   ));
 

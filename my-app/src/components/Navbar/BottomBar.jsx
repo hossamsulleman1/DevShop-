@@ -30,6 +30,7 @@ import Badge from "@material-ui/core/Badge";
 import FlashOffIcon from "@material-ui/icons/FlashOff";
 import { useHistory } from "react-router-dom";
 import DarkMode from "../Button/DarkMode";
+// import  BottomDrawerCat  from "../Button/BottomDrawerCat";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BottomAppBar() {
+export default function BottomAppBar({ totalItems }) {
   const classes = useStyles();
 
   // buttons function
@@ -101,9 +102,7 @@ export default function BottomAppBar() {
 
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
+          {/* <BottomDrawerCat /> */}
 
           <IconButton
             onClick={ProfileHandle}
@@ -114,9 +113,9 @@ export default function BottomAppBar() {
           </IconButton>
 
           <IconButton onClick={CartHandle} edge="start">
-            {/* <Badge badgeContent={totalItems} color="secondary"> */}
-            <ShoppingCart />
-            {/* </Badge> */}
+            <Badge badgeContent={totalItems} color="secondary">
+              <ShoppingCart />
+            </Badge>
           </IconButton>
 
           <Fab

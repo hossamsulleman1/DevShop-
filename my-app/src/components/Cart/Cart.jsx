@@ -5,6 +5,8 @@ import Fab from "@material-ui/core/Fab";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Loading from "../Button/Loading";
 
 const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const classes = useStyles();
@@ -30,7 +32,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
     </div>
   );
 
-  if (!cart.line_items) return "Loading";
+  if (!cart.line_items) return <Loading/> ;
 
   const renderCart = () => (
     <>

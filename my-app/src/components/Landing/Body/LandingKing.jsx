@@ -5,7 +5,7 @@ import LandingPage from "./LandingPage";
 const LandingKing = () => {
   return (
     <div>
-      <LandingPage />
+      <LandingPage companyName="semptia" />
       <Footer />
     </div>
   );

@@ -67,60 +67,57 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   );
 
   return (
-    <>
-      <AppBar position="fixed" className={classes.appBar} color="inherit">
-        <Toolbar>
-          <Typography
-            style={{ textDecoration: "none" }}
-            component={Link}
-            to="/"
-            variant="h6"
-            color="inherit"
-          >
-            <img
-              src={logo}
-              alt="Semptia Dev"
-              height="25px"
-              className={classes.image}
-            />
-            Semptia
-          </Typography>
-          <div className={classes.grow} />
-          {location.pathname === "/" && (
-            <div className={classes.button}>
-              {/* <IconButton component={Link} to="/Market" color="inherit">
+    <AppBar position="fixed" className={classes.appBar} color="inherit">
+      <Toolbar>
+        <Typography
+          style={{ textDecoration: "none" }}
+          component={Link}
+          to="/"
+          variant="h6"
+          color="inherit"
+        >
+          <img
+            src={logo}
+            alt="Semptia Dev"
+            height="25px"
+            className={classes.image}
+          />
+          Semptia
+        </Typography>
+        <div className={classes.grow} />
+        {location.pathname === "/" && (
+          <div className={classes.button}>
+            {/* <IconButton component={Link} to="/Market" color="inherit">
                 <LoyaltyIcon></LoyaltyIcon>
                 {/* market */}
-              {/* </IconButton> */}
-            </div>
-          )}
+            {/* </IconButton> */}
+          </div>
+        )}
 
-          <DarkMode />
+        <IconButton component={Link} to="/welcome" color="inherit">
+          <FaceIcon />
+          {/* profile page */}
+        </IconButton>
 
-          <IconButton component={Link} to="/welcome" color="inherit">
-            <FaceIcon />
-            {/* profile page */}
-          </IconButton>
+        <IconButton
+          component={Link}
+          to="/cart"
+          aria-label="Show cart items"
+          color="inherit"
+        >
+          <Badge badgeContent={totalItems} color="secondary">
+            <ShoppingCart />
+          </Badge>
+        </IconButton>
 
-          <IconButton
-            component={Link}
-            to="/cart"
-            aria-label="Show cart items"
-            color="inherit"
-          >
-            <Badge badgeContent={totalItems} color="secondary">
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
+        <IconButton component={Link} to="/Shop" color="inherit">
+          <LocalMallIcon />
+          {/* market */}
+        </IconButton>
 
-          <IconButton component={Link} to="/Shop" color="inherit">
-            <LocalMallIcon />
-            {/* market */}
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-    </>
+        <DarkMode />
+      </Toolbar>
+    </AppBar>
   );
 };
 

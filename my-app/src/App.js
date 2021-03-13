@@ -16,6 +16,7 @@ import FirebaseAuth from "./components/Auth/FirebaseAuth";
 import Item from "./components/Item/Item";
 import LandingKing from "./components/Landing/Body/LandingKing";
 import BottomBar from "./components/Navbar/BottomBar";
+import Loading from "./components/Button/Loading";
 
 const Profile = lazy(() => import("./components/Profile/Profile"));
 
@@ -98,7 +99,7 @@ const App = (props) => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Suspense fallback={<CircularProgress />}>
+      <Suspense fallback={<Loading />}>
         <Router>
           <div style={{ display: "flex" }}>
             <CssBaseline />
@@ -111,7 +112,7 @@ const App = (props) => {
                   handleUpdateCartQty
                 />
 
-                <BottomBar />
+                <BottomBar totalItems={cart.total_items} />
               </Route>
               <Route exact path="/cart">
                 <Navbar

@@ -16,10 +16,15 @@ import SearchIcon from "@material-ui/icons/Search";
 import { green } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { Fab } from "@material-ui/core";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
+  },
+  icon: {
+    margin: 10,
   },
   fullList: {
     width: "auto",
@@ -108,9 +113,7 @@ function BottomDrawerHome() {
           <KeyboardArrowDownIcon />
           {/* toggle drawer close */}
         </IconButton>
-        <Grid item xs={12}>
-          
-        </Grid>
+        <Grid item xs={12}></Grid>
 
         <div className={classes.search}>
           <div className={classes.searchIcon}>
@@ -159,13 +162,14 @@ function BottomDrawerHome() {
     <div>
       {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button
+          <Fab
             variant="contained"
             color="secondary"
             onClick={toggleDrawer(anchor, true)}
           >
             Explore
-          </Button>
+            <ExploreIcon className={classes.icon} />
+          </Fab>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

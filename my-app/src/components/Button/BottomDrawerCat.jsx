@@ -2,20 +2,14 @@ import React from "react";
 import clsx from "clsx";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
-import { green } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { Fab } from "@material-ui/core";
+import { MenuIcon } from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -74,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BottomDrawerHome() {
+function BottomDrawerCat() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -108,9 +102,7 @@ function BottomDrawerHome() {
           <KeyboardArrowDownIcon />
           {/* toggle drawer close */}
         </IconButton>
-        <Grid item xs={12}>
-          
-        </Grid>
+        <Grid item xs={12}></Grid>
 
         <div className={classes.search}>
           <div className={classes.searchIcon}>
@@ -127,9 +119,7 @@ function BottomDrawerHome() {
         </div>
       </Grid>
 
-      <List>
-      
-      </List>
+      <List></List>
     </div>
   );
 
@@ -137,13 +127,14 @@ function BottomDrawerHome() {
     <div>
       {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button
-            variant="contained"
-            color="secondary"
+          <Fab
+            edge="start"
+            aria-label="open drawer"
             onClick={toggleDrawer(anchor, true)}
+            variant="small"
           >
-            Explore
-          </Button>
+            <MenuIcon />
+          </Fab>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -157,4 +148,4 @@ function BottomDrawerHome() {
   );
 }
 
-export default BottomDrawerHome;
+export default BottomDrawerCat;

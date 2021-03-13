@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 60,
   },
   PaddingLeft: {
-    marginLeft: 60,
-    marginRight: 60,
+    marginLeft: 50,
+    marginRight: 50,
   },
   HeadingTitle: {
     fontFamily: ["Inter", "sans-serif"].join(","),
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LandingPage = () => {
+const LandingPage = ({ companyName }) => {
   const classes = useStyles();
 
   return (
@@ -70,23 +70,23 @@ const LandingPage = () => {
             xs={12}
             lg={6}
           >
-            {/* body */}
-
             <Typography className={classes.HeadingTitle}>
-              In with the new.
+              Transparency is key.
             </Typography>
             <Divider className={classes.Divider} />
-            <Typography variant="body2" color="textSecondary">
-              We belive the industry is outdated
-            </Typography>
 
             <Typography variant="body2" color="textSecondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-
-            <Typography variant="body2" color="textSecondary">
-              dont stop the dream
+              Every now and so the industry changes some say in the right
+              direction some in the wrong some in the right however at{" "}
+              {companyName} we belive the time for change is now this time in
+              the {companyName} direction we dont thrive for the best for
+              ourselves or the best for our customers like the many competitors
+              claim or maintain customers under invaluable gimmicks and shackles
+              we strive for the best for us and for our customers an effective
+              layout, reliable and adhear by payment security laws, competetive
+              prices and aim to give a informative and transparent shopping
+              experience that can be counted on that customers deserve and
+              companies should have been giving for everyones best interest.
             </Typography>
           </Grid>
 
