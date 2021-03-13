@@ -9,13 +9,12 @@ import {
 } from "@material-ui/core";
 
 import useStyles from "./styles";
+import Loading from "../../Button/Loading";
 
 const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const classes = useStyles();
 
-
-  
- 
+  if (!item) return <Loading />;
 
   const handleUpdateCartQty = (lineItemId, newQuantity) =>
     onUpdateCartQty(lineItemId, newQuantity);
@@ -24,7 +23,11 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
 
   return (
     <Card className="cart-item">
-      <CardMedia image={item.media.source} alt={item.name} className={classes.media} />
+      <CardMedia
+        image={item.media.source}
+        alt={item.name}
+        className={classes.media}
+      />
       <CardContent className={classes.cardContent}>
         <Typography variant="h4">{item.name}</Typography>
         <Typography variant="h5">

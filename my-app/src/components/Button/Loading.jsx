@@ -26,3 +26,5 @@ const Loading = () => {
 };
 
 export default Loading;
+
+// if (!cart.line_items) return <Loading/> ;
