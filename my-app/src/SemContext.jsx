@@ -11,12 +11,18 @@ export const SemProvider = (props) => {
 
   const [darkState, setDarkState] = useState(true);
 
+  const [relatedProducts, setRelatedProducts] = useState([]);
+
+  const [cart, setCart] = useState({});
+
   return (
     <SemContext.Provider
       value={
         ([authInfo, setAuthInfo],
         [darkState, setDarkState],
-        [currentItem, setCurrentItem])
+        [currentItem, setCurrentItem],
+        [relatedProducts, setRelatedProducts],
+        [cart, setCart])
       }
     >
       {props.children}

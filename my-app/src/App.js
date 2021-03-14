@@ -23,7 +23,7 @@ const Profile = lazy(() => import("./components/Profile/Profile"));
 const App = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useContext(SemContext);
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [darkState, setDarkState] = useContext(SemContext);
@@ -175,7 +175,7 @@ const App = (props) => {
               </Route>
 
               <Route path="/item" exact>
-                <Item />
+                <Item onAddToCart={handleAddToCart} />
               </Route>
             </Switch>
           </div>

@@ -18,6 +18,7 @@ import IconButton from "@material-ui/core/IconButton";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { Fab } from "@material-ui/core";
 import ExploreIcon from "@material-ui/icons/Explore";
+import NestedList from "../MaterialProp/NestedList";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -135,22 +136,8 @@ function BottomDrawerCat() {
           {/* search  */}
         </Grid>
 
-        <Grid container justify="center" alignItems="center">
-          <Grid container xs={6}>
-            <div className={classes.genre}></div>
-          </Grid>
-
-          <Grid container xs={6}>
-            <div className={classes.genre}></div>
-          </Grid>
-
-          <Grid container xs={6}>
-            <div className={classes.genre}></div>
-          </Grid>
-
-          <Grid container xs={6}>
-            <div className={classes.genre}></div>
-          </Grid>
+        <Grid container>
+          <NestedList />
         </Grid>
 
         {/* put div squares for dif genres and things like that sale ect  */}

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 50,
   },
   marginRight: {
-    marginRight: 5,
+    marginRight: 15,
   },
   list: {
     marginBottom: theme.spacing(2),

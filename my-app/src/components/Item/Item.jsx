@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import Footer from "../Footer/Footer";
 import { Grid } from "@material-ui/core";
 import { SemContext } from "../../SemContext";
@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { commerce } from "../../lib/commerce";
 
 import { Link } from "react-router-dom";
 import Loading from "../Button/Loading";
@@ -53,25 +54,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// sfhiofhsioefhso[efse]
+
+// ajpiodjidaw
+
 const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
   const [currentItem, setCurrentItem] = useContext(SemContext);
   const [purchaseUrl, setPurchaseUrl] = useContext(SemContext);
   const [relatedProduts, setRelatedProducts] = useContext(SemContext);
+  const [cart, setCart] = useContext(SemContext);
+  const [productz, setProductz] = useContext(SemContext);
 
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [photo, setPhoto] = useState();
   const [productId, setProductId] = useState();
-  const [price, setPrice] = useState();
-  const [variants, setVariants] = useState();
-  const [sizes, setSizes] = useState();
-  const [assets, setAssets] = useContext(SemContext);
 
-  let history = useHistory();
+  const [assets, setAssets] = useContext(SemContext);
 
   useEffect(() => {
     // remove if not fixed
-    console.log(product.id);
+
+    // ONLY ONE WORJKING
+    setProductz(product);
     setProductId(product.id);
     // SAME ITEM DIF PATHS FROM CONEXT VS PROPS  ^ and under
     setPurchaseUrl(product.checkout_url.checkout);
@@ -83,17 +85,15 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
     window.location.replace(product.checkout_url.checkout);
   }
 
-  function AddToCart({ onAddtoCart, product }) {
-    try {
-      // onAddToCart(productId, 1);
-      console.log(product.id);
-      console.log(productId);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const handleAddToCart = async (productId, quantity) => {
+  //   const item = await commerce.cart.add(productId, quantity);
+
+  //   setCart(item.cart);
+  // };
 
   const classes = useStyles();
+
+  const handleAddToCart = () => onAddToCart(productId, 1);
 
   return (
     <>
@@ -139,7 +139,11 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
       </Grid>
 
       <Grid container justify="center" alignItems="center" xs={12}>
-        <Fab onClick={AddToCart} className={classes.fab} variant="extended">
+        <Fab
+          onClick={handleAddToCart}
+          className={classes.fab}
+          variant="extended"
+        >
           <ShoppingBasketIcon className={classes.icon} />
           basket
         </Fab>
@@ -164,7 +168,7 @@ const Item = ({ onAddToCart, product, image, itemPrice, title }) => {
             href="https://www.pcicomplianceguide.org/faq/#1"
           />
 
-          <RelatedProducts />
+          <RelatedProducts product={product} />
 
           {/* link this link in image  */}
         </Grid>

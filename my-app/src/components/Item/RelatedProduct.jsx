@@ -4,14 +4,17 @@ import Grid from "@material-ui/core/Grid";
 import Loading from "../Button/Loading";
 import Related from "./Related";
 
-const RelatedProduct = () => {
+const RelatedProduct = ({ product }) => {
   const [relatedProducts, setRelatedProducts] = useContext(SemContext);
+  const [productz, setProductz] = useContext(SemContext);
 
-  if (!relatedProducts) return <Loading />;
+  console.log(productz);
+
+  if (!productz.related_products) return <Loading />;
 
   return (
     <Grid container justify="center" spacing={4}>
-      {relatedProducts.map((product) => (
+      {product.related_products.map((product) => (
         <Grid
           key={product.id}
           justifyContent="center"
