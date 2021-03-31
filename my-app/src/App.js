@@ -98,90 +98,92 @@ const App = (props) => {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Suspense fallback={<Loading />}>
-        <Router>
-          <div style={{ display: "flex" }}>
-            <CssBaseline />
+    <React.StrictMode>
+      <ThemeProvider theme={darkTheme}>
+        <Suspense fallback={<Loading />}>
+          <Router>
+            <div style={{ display: "flex" }}>
+              <CssBaseline />
 
-            <Switch>
-              <Route exact path="/Shop">
-                <Products
-                  products={products}
-                  onAddToCart={handleAddToCart}
-                  handleUpdateCartQty
-                />
+              <Switch>
+                <Route exact path="/Shop">
+                  <Products
+                    products={products}
+                    onAddToCart={handleAddToCart}
+                    handleUpdateCartQty
+                  />
 
-                <BottomBar totalItems={cart.total_items} />
-              </Route>
-              <Route exact path="/cart">
-                <Navbar
-                  totalItems={cart.total_items}
-                  handleDrawerToggle={handleDrawerToggle}
-                />
-                <Cart
-                  cart={cart}
-                  onUpdateCartQty={handleUpdateCartQty}
-                  onRemoveFromCart={handleRemoveFromCart}
-                  onEmptyCart={handleEmptyCart}
-                />
-              </Route>
-              <Route path="/checkout" exact>
-                <Navbar
-                  totalItems={cart.total_items}
-                  handleDrawerToggle={handleDrawerToggle}
-                />
-                <Checkout
-                  cart={cart}
-                  order={order}
-                  onCaptureCheckout={handleCaptureCheckout}
-                  error={errorMessage}
-                />
-              </Route>
-              <Route path="/Market" exact>
-                <Navbar
-                  totalItems={cart.total_items}
-                  handleDrawerToggle={handleDrawerToggle}
-                />
-                <Market />
-              </Route>
+                  <BottomBar totalItems={cart.total_items} />
+                </Route>
+                <Route exact path="/cart">
+                  <Navbar
+                    totalItems={cart.total_items}
+                    handleDrawerToggle={handleDrawerToggle}
+                  />
+                  <Cart
+                    cart={cart}
+                    onUpdateCartQty={handleUpdateCartQty}
+                    onRemoveFromCart={handleRemoveFromCart}
+                    onEmptyCart={handleEmptyCart}
+                  />
+                </Route>
+                <Route path="/checkout" exact>
+                  <Navbar
+                    totalItems={cart.total_items}
+                    handleDrawerToggle={handleDrawerToggle}
+                  />
+                  <Checkout
+                    cart={cart}
+                    order={order}
+                    onCaptureCheckout={handleCaptureCheckout}
+                    error={errorMessage}
+                  />
+                </Route>
+                <Route path="/Market" exact>
+                  <Navbar
+                    totalItems={cart.total_items}
+                    handleDrawerToggle={handleDrawerToggle}
+                  />
+                  <Market />
+                </Route>
 
-              <Route path="/Welcome" exact>
-                <LoginSign />
-              </Route>
+                <Route path="/Welcome" exact>
+                  <LoginSign />
+                </Route>
 
-              <Route path="/Profile" exact>
-                <Navbar
-                  totalItems={cart.total_items}
-                  handleDrawerToggle={handleDrawerToggle}
-                />
-                <Profile />
-              </Route>
+                <Route path="/Profile" exact>
+                  <Navbar
+                    totalItems={cart.total_items}
+                    handleDrawerToggle={handleDrawerToggle}
+                  />
+                  <Profile />
+                </Route>
 
-              <Route path="/JoinUS" exact>
-                <JoinUS />
-              </Route>
+                <Route path="/JoinUS" exact>
+                  <JoinUS />
+                </Route>
 
-              <Route path="/" exact>
-                <Navbar
-                  totalItems={cart.total_items}
-                  handleDrawerToggle={handleDrawerToggle}
-                />
-                <LandingKing />
-              </Route>
+                <Route path="/" exact>
+                  <Navbar
+                    totalItems={cart.total_items}
+                    handleDrawerToggle={handleDrawerToggle}
+                  />
+                  <LandingKing />
+                </Route>
 
-              <Route path="/auth" exact>
-                <FirebaseAuth />
-              </Route>
+                <Route path="/auth" exact>
+                  <FirebaseAuth />
+                </Route>
 
-              <Route path="/item" exact>
-                <Item onAddToCart={handleAddToCart} />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </Suspense>
-    </ThemeProvider>
+                <Route path="/item" exact>
+                  <Item onAddToCart={handleAddToCart} />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        </Suspense>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 };
 

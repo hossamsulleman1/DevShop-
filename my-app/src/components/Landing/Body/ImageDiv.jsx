@@ -10,6 +10,7 @@ import ShopTwoIcon from "@material-ui/icons/ShopTwo";
 import Button from "@material-ui/core/Button";
 import BottomDrawerHome from "./../../Button/BottomDrawerHome";
 import { useHistory } from "react-router-dom";
+import BottomDrawerCat from "../../Button/BottomDrawerCat";
 
 const useStyles = makeStyles({
   div: {
@@ -60,7 +61,7 @@ const ImageDiv = () => {
         </div>
 
         <div className={classes.buttons}>
-          <BottomDrawerHome />
+          <BottomDrawerCat />
         </div>
       </Grid>
 

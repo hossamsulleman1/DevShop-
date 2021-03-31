@@ -68,7 +68,7 @@ const LandingPage = ({ companyName }) => {
             alignItems="center"
             className={classes.PaddingLeft}
             xs={12}
-            lg={6}
+            lg={5}
           >
             <Typography className={classes.HeadingTitle}>
               Transparency is key.

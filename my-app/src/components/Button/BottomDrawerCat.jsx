@@ -106,11 +106,10 @@ function BottomDrawerCat() {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Grid container justify="center" alignItems="center">
-        <IconButton>
+        <IconButton onClick={toggleDrawer(anchor, false)}>
           <KeyboardArrowDownIcon />
           {/* toggle drawer close */}
         </IconButton>

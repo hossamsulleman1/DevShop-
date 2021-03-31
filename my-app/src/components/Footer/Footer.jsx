@@ -24,6 +24,9 @@ const useStyles = makeStyles({
   marginTop: {
     marginTop: 50,
   },
+  padding5: {
+    marginTop: 35,
+  },
 });
 
 const Footer = () => {
@@ -106,6 +109,7 @@ const Footer = () => {
       <Grid container justify="center" alignItems="center">
         <Grid container xs={12} lg={4}>
           <div className={classes.marginsmall}>
+            <div className={classes.padding5}></div>
             <p
               className="HomeTitleMedium"
 
